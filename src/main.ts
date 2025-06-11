@@ -1,5 +1,5 @@
 import express from "express";
-import pokemonRoutes from "./routes/pokemon.routes";
+import pokemonRoutes from "./routes/pokemon.route";
 
 const app = express();
 const port = 3000;

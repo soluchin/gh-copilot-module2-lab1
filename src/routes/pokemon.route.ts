@@ -11,6 +11,7 @@ pokemonRoutes.get("/api/pokemon", (req, res) => {
 // Get a Pokemon by ID
 pokemonRoutes.get("/api/pokemon/:id", (req, res) => {
   const id = parseInt(req.params.id);
+  // TODO Objective 3. Ask Copilot to explain the difference between find and filter methods
   const found = pokemons.find(p => p.id === id);
   if (found) {
     res.json(found);
@@ -23,6 +24,7 @@ pokemonRoutes.get("/api/pokemon/:id", (req, res) => {
 pokemonRoutes.get("/api/pokemon", (req, res) => {
   const type = req.query.type?.toString();
   if (type) {
+    // TODO Objective 3. Ask Copilot to explain the difference between find and filter methods
     const filtered = pokemons.filter(p => p.type.includes(type));
     res.json(filtered);
   } else {
