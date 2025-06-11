@@ -9,10 +9,10 @@ export interface Pokemon {
     defense: number;
     speed: number;
   };
-  // TODO Objective 4. Add another property to the Pokemon interface, prompt it using copilot
+  // TODO Objective 5. Add another property to the Pokemon interface, prompt it using copilot
 }
 
-// TODO Objective 5. Ask Copilot to adjust the pokemons array to include the new property in each Pokemon object
+// TODO Objective 6. Ask Copilot to adjust the pokemons array to include the new property in each Pokemon object
 export const pokemons: Pokemon[] = [
   {
     id: 1,
