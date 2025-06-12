@@ -1,0 +1,4 @@
+- For every function that you create, add comments in bahasa Indonesia
+- For every comment that you create, add comments 'created by copilot' at the end of the comment
+- answer with bahasa
+- Use express js for backend style

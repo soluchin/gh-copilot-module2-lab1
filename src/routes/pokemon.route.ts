@@ -10,7 +10,10 @@ pokemonRoutes.get("/", (req, res) => {
   if (type) {
     // TODO Objective 3. Ask Copilot to explain the difference between find and filter methods
     // TODO Objective 4. Ask Copilot to edit, code below should ignore case when filtering by type
-    const filtered = pokemons.filter(p => p.type.includes(type));
+    // Melakukan filter Pokemon berdasarkan tipe, mengabaikan huruf besar/kecil (created by copilot)
+    const filtered = pokemons.filter(p => 
+      p.type.some(t => t.toLowerCase() === type.toLowerCase())
+    );
     res.json(filtered);
   } else {
     res.json(pokemons);
@@ -34,10 +37,27 @@ pokemonRoutes.get("/:id", (req, res) => {
 pokemonRoutes.get("/:id/stats", (req, res) => {
   const id = parseInt(req.params.id);
   const found = pokemons.find(p => p.id === id);
-  // TODO Objective 2. This should return exception if the pokemon is not found (modify it using copilot)
+  // Mengecek apakah Pokemon ditemukan, jika tidak, kembalikan error 404 (created by copilot)
+  if (!found) {
+    res.status(404).json({ message: "Pokémon tidak ditemukan" });
+  }
   res.json(found?.baseStats);
 });
 
 // TODO Objective 1. Add another api endpoint to create pokemon, prompt it using copilot
+/**
+ * Endpoint untuk membuat Pokemon baru (created by copilot)
+ */
+pokemonRoutes.post("/", (req, res) => {
+  // Mengambil data Pokemon baru dari body request (created by copilot)
+  const newPokemon = req.body;
+  console.log(newPokemon);
+  // Menambahkan id unik untuk Pokemon baru (created by copilot)
+  newPokemon.id = pokemons.length > 0 ? pokemons[pokemons.length - 1].id + 1 : 1;
+  // Menambahkan Pokemon baru ke array pokemons (created by copilot)
+  pokemons.push(newPokemon);
+  // Mengembalikan Pokemon yang baru dibuat sebagai response (created by copilot)
+  res.status(201).json(newPokemon);
+});
 
 export default pokemonRoutes;
